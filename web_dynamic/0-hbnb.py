@@ -17,13 +17,13 @@ host = '0.0.0.0'
 
 @app.teardown_appcontext
 def close_db(error):
-    """ Remove the current SQLAlchemy Session """
+    """ Stop current SQLAlchemy Session """
     storage.close()
 
 
 @app.route('/0-hbnb')
 def hbnb():
-    """handles request for template with states,cities & amentities"""
+    """Request for template with states,cities & amentities"""
     states = storage.all(State).values()
     states = sorted(states, key=lambda k: k.name)
     st_ct = []
